@@ -1,24 +1,20 @@
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
-import org.gradle.api.logging.LogLevel
-import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.findByType
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun Project.applyAndroid(
     useViewBinding: Boolean = false,
     generateBuildConfig: Boolean = false
 ) {
     extensions.findByType<LibraryExtension>()?.apply {
-        compileSdk = AppConfig.compileSdkVersion
-        buildToolsVersion = AppConfig.buildToolVersion
+        compileSdk = AppConfig.compileSdk
+        buildToolsVersion = AppConfig.buildToolsVersion
 
         defaultConfig {
-            targetSdk = AppConfig.targetSdkVersion
-            minSdk = AppConfig.minSdkVersion
+            targetSdk = AppConfig.targetSdk
+            minSdk = AppConfig.minSdk
 
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             testInstrumentationRunnerArguments += mapOf(
@@ -44,12 +40,12 @@ fun Project.applyAndroid(
             buildConfig = generateBuildConfig
         }
 
-        lint {
+        /*lint {
             isCheckReleaseBuilds = false
             isAbortOnError = false
             isIgnoreWarnings = true
             isQuiet = true
-        }
+        }*/
 
         packagingOptions {
             resources.excludes.addAll(

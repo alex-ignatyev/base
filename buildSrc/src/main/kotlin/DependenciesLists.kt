@@ -2,8 +2,8 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 fun DependencyHandlerScope.hilt() {
     implementation(Dependencies.hiltAndroid)
-    implementation(Dependencies.hiltAndroidXCompiler)
-    kapt(Dependencies.hiltAndroidCompiler)
+    implementation(Dependencies.hiltAndroidXCompilerKapt)
+    kapt(Dependencies.hiltAndroidCompilerKapt)
 }
 
 fun DependencyHandlerScope.retrofit() {
@@ -14,30 +14,12 @@ fun DependencyHandlerScope.retrofit() {
 fun DependencyHandlerScope.modo() {
     implementation(Dependencies.modo)
     implementation(Dependencies.modoRenderAndroidFm)
-    kapt(Dependencies.hiltAndroidCompiler)
-}
-
-fun DependencyHandlerScope.moshi() {
-    implementation(Dependencies.moshi)
-    implementation(Dependencies.hiltAndroidXCompiler)
-    kapt(Dependencies.moshiKapt)
+    kapt(Dependencies.hiltAndroidCompilerKapt)
 }
 
 fun DependencyHandlerScope.glide() {
     implementation(Dependencies.glide)
     kapt(Dependencies.glideCompiler)
-}
-
-fun DependencyHandlerScope.mviKotlin() {
-    implementation(Dependencies.mviKotlinCore)
-    implementation(Dependencies.mviKotlinMain)
-    implementation(Dependencies.mviKotlinLogging)
-    implementation(Dependencies.mviKotlinTimeTravel)
-    implementation(Dependencies.mviKotlinExtensionsCoroutines)
-    implementation(Dependencies.mviKotlinExtensionsReaktive)
-    implementation(Dependencies.mviKotlinRxCore)
-    implementation(Dependencies.mviKotlinRxInternal)
-    implementation(Dependencies.mviKotlinUtilsInternal)
 }
 
 private fun DependencyHandlerScope.implementation(name: String) {
